@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ALERT</title>
+    </head>
+    <body>
+        <button onclick="myFunction()">TRY IT</button>
+        <p id="demo"></p>
+        <script>
+            function myFunction(){
+                if(confirm("PRESS A BUTTON")){
+                    txt="YOU PRESSED OK";
+                }else {
+                    txt="you pressed CANCEL";
+                }
+                document.getElementById("demo").innerHTML=txt;
+            }
+        </script>
+    </body>
+</html>
