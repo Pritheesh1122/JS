@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>EMAIL</title>
+</head>
+
+<body>
+    <script>
+        function emailValidate() {
+            var email = document.myForm.email.value;
+            var atPosition = email.indexOf("@");
+            var dotPosition = email.lastIndexOf(".");
+            var password = document.myForm.password.value;
+            var cpassword = document.myForm.cpassword.value;
+            if (atPosition < 1 || dotPosition < atPosition + 2 || dotPosition + 2 >= email.length) {
+                alert("PLEASE ENTER THE VALID EMAIL ADDRESS \n atPosition" + atPosition + "\ndotPosition" + dotPosition);
+                return false;
+            } else if (email == null || email == "") {
+                alert("email must be entered");
+                return false;
+            }else if(email==password){
+                return true;
+            } 
+            else if (password == cpassword) {
+                return true;
+            } else if (password.length < 6) {
+                alert("password must be atleast 6 characters");
+                return false;
+            } else {
+                alert("password must be same");
+                return false;
+            }
+        }
+    </script>
+    <form name="myForm" onsubmit="return emailValidate()" style="margin: 100px; ">
+        EMAIL:<input type="text" name="email"><br />
+        PASSWORD:<input type="password" name="password"><br />
+        CONFIRM PASSWORD:<input type="password" name="cpassword"><br />
+        <input type="submit" value="submit">
+    </form>
+</body>
+
+</html>
