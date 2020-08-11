@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VALIDATED</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container mt-5 pt-5">
+        <form class="needs-validation" name="myForm"
+            oninput='cpassword.setCustomValidity(cpassword.value != password.value ? "Passwords do not match." : "")'
+            novalidate>
+            <div class="form-group">
+                <label for="username">User Name</label>
+                <input type="text" id="username" class="form-control" placeholder="ex:qwerty" name="username"
+                    pattern="[a-zA-Z]{3,}" required>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="form-control" placeholder="ex:john123@gmail.com" name="email"
+                    required>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" name="password" onkeyup="check()"
+                    required><span id="message"></span>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <label for="cpassword">Confirm Password</label>
+                <input type="password" id="cpassword" class="form-control" name="cpassword" onkeyup="check()"
+                    required><span id="message"></span>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" class="form-control" required>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="number" class="form-control" required>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" id="check" class="custom-control-input" name="check" required>
+                <label for="check" class="custom-control-label">I have a Car</label>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="Male" class="custom-control-input" name="gender" required>
+                <label for="Male" class="custom-control-label">Male</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="Female" class="custom-control-input" name="gender" required>
+                <label for="Female" class="custom-control-label">Female</label>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <label for="comment">Comments</label>
+                <textarea class="form-control" id="comment" required></textarea>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <label for="country">Select Countries</label>
+                <select class="form-control" id="country" required>
+                    <option value="">select country</option>
+                    <option value="1">India</option>
+                    <option value="2">Australia</option>
+                    <option value="3">Germany</option>
+                    <option value="4">USA</option>
+                </select>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <input type="range" class="form-control-range" value="0" id="range" required>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <input type="file" class="form-control-file" id="file" required>
+                <div class="invalid-feedback">Please fill out this field</div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-block">Submit</button>
+            </div>
+        </form>
+        <script>
+            (function () {
+                "use strict";
+                window.addEventListener("load", function () {
+                    var forms = document.getElementsByClassName("needs-validation");
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener("submit", function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add("was-validated");
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+        <script>
+            var check = function () {
+                if (document.getElementById('password').value ==
+                    document.getElementById('cpassword').value) {
+                    document.getElementById('message').style.color = 'green';
+                    document.getElementById('message').innerHTML = 'matching';
+                } else {
+                    document.getElementById('message').style.color = 'red';
+                    document.getElementById('message').innerHTML = 'not matching';
+                }
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>
